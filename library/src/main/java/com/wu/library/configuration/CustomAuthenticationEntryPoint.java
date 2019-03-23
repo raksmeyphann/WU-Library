@@ -1,4 +1,4 @@
-//testconflict
+//testconflict with v1
 package com.wu.library.configuration;
 
 import org.springframework.context.annotation.Configuration;
