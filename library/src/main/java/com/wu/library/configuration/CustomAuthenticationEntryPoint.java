@@ -1,6 +1,6 @@
 //testconflict with develop
+//testconflict with v2
 package com.wu.library.configuration;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
