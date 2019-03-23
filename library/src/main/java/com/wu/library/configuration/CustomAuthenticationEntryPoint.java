@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 //add new from develop
+// add from v1
 @Configuration
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
