@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/master}"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" >
+<head>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <!--Navbar -->
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+                aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light" data-toggle="modal" data-target="#modalDefaultContactForm">
+                        BORROW
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fas fa-plus-circle" data-toggle="modal" data-target="#modalDefaultContactForm"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead style="color: #3f51b5">
+        <tr>
+            <th class="th-sm" >Profile
+            </th>
+            <th class="th-sm">ID card
+            </th>
+            <th class="th-sm">UserName
+            </th>
+            <th class="th-sm">Phone
+            </th>
+            <th class="th-sm">Address
+            </th>
+            <th class="th-sm">Email
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr td th:each="user :${users}">
+            <td style="text-align: center">
+                <img th:src="${user.profileImg}" style="width:85px; height:60px;">
+            </td >
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.phone}"></td>
+            <td th:text="${user.address}"></td>
+            <td th:text="${user.username}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="modal fade" id="modalDefaultContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!--Modal: Contact form-->
+        <div class="modal-dialog cascading-modal" role="document">
+
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Header-->
+                <div class="modal-header info-color white-text">
+                    <h4 class="title">
+                        Borrow Book</h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+
+                    <label for="qrcode">QRCODE</label>
+                    <input type="text" id="qrcode" class="form-control form-control-sm">
+
+                    <br>
+
+                    <label for="memberid">Member Id</label>
+                    <input type="text" id="memberid" class="form-control form-control-sm">
+
+
+                    <div class="text-center mt-4 mb-2">
+                        <button class="btn btn-info" onclick="save()">Borrow
+                            <i class="fa fa-send ml-2"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+        <!--/Modal: Contact form-->
+    </div>
+</div>
+<script layout:fragment="script">
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+    });
+
+    // $(".delete").click(function () {
+    //     var data_id = $(this).attr("book-id");
+    //     swal({
+    //         title: "Are you sure to delete book ?",
+    //         icon: "warning",
+    //         buttons: true,
+    //         dangerMode: true,
+    //     })
+    //         .then((willDelete) => {
+    //         if (willDelete) {
+    //             $.ajax({
+    //                 url: "/api/v1/book/delete/" + data_id,
+    //                 type: "DELETE",
+    //                 success: function (response) {
+    //
+    //                     swal("Poof! Your success Delete It", {
+    //                         icon: "success",
+    //                     }).then(function () {
+    //                         location.reload();
+    //                     });
+    //                 },
+    //                 failure: function (response) {
+    //                     alert(response.responseText);
+    //                 },
+    //                 error: function (response) {
+    //                     alert(response.responseText);
+    //                 }
+    //             });
+    //
+    //         }
+    //         else {
+    //             swal("You Have Cancel!");
+    // }
+    // });
+    //
+    // });
+    //
+    // function save() {
+    //     var id = $("#qrcode").val();
+    //     var author = $("#author").val();
+    //     var isbn = $("#isbn").val();
+    //     var page = $("#page").val();
+    //     var personal = $("#personal").val();
+    //     var publisher = $("#publisher").val();
+    //     var title = $("#title").val();
+    //     var year = $("#year").val();
+    //     var cate_id = $("#category").val();
+    //
+    //     var book = {
+    //         "author": author,
+    //         "id": id,
+    //         "isbn": isbn,
+    //         "page": page,
+    //         "personal": personal,
+    //         "publisher": publisher,
+    //         "title": title,
+    //         "year": year,
+    //         "category_id": cate_id
+    //     };
+    //
+    //     alert(title);
+    //     $.ajax({
+    //         url: "/api/v1/book/create",
+    //         type: "POST",
+    //         data: JSON.stringify(book),
+    //         contentType: "application/json",
+    //         success: function (resoponse) {
+    //             swal("saved!", "", "success");
+    //
+    //         },
+    //         error: function (error) {
+    //             swal("save unsueccfully!", "", "error");
+    //             console.log(error);
+    //         },
+    //     });
+    //
+    // }
+
+</script>
+
+</body>
+
+
+</html>
