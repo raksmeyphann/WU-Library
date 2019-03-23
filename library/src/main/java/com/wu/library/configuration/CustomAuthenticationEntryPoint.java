@@ -1,4 +1,4 @@
-//testconflict with v1
+//testconflict with develop
 package com.wu.library.configuration;
 
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+//add new from develop
 @Configuration
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
